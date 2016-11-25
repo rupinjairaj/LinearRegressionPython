@@ -29,3 +29,12 @@ print "Intercept is {0}".format(lm.intercept_)
 print "Coefficient value of the height is {0}".format(lm.coef_)
 print pd.DataFrame(zip(s1_data.columns, lm.coef_),
 					columns = ['features', 'estimatedCoefficients'])
+
+# Plotting the graphical view
+fig, ax = plt.subplots(1, 1)
+ax.scatter(s1_data.Height, s1_data.Weight)
+ax.plot(s1_data.Height, lm.predict(s1_data.Height[:, np.newaxis]), 
+			color = 'red')
+ax.set_xlabel('Height')
+ax.set_ylabel('Weight')
+plt.show()
